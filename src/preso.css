@@ -1,0 +1,302 @@
+@CHARSET "UTF-8";
+
+* {
+	margin: 0;
+	padding: 0;
+}
+
+body {
+	font-family: "Trebuchet MS", arial, helvetica, sans-serif; 
+}
+
+code {
+	font-family: monospace; 
+}
+
+header, footer {
+	display: none !important;
+}
+
+article, section {
+	display: block;
+	word-wrap:break-word;
+	background: transparent;
+}
+
+mark {
+	background: transparent !important;
+	text-shadow: 0em 0em 0.2ex #FF0, 0em 0em 1ex #FF0;
+}
+
+a {
+	text-shadow: 0em 0.2ex 0.4em #FDD;
+	text-decoration: none;
+	-moz-border-radius: .2ex;
+	-webkit-border-radius: .2ex;
+	color: #C00;
+}
+
+a:hover {
+	text-shadow: 0em 0.2ex 0.7em #F99;
+	color: #F00;
+}
+
+nav button{
+	opacity: 0.05;
+}
+
+nav button:hover{
+	opacity: 1;
+}
+
+article {
+	font-size: 150%;
+	margin: auto;
+	max-width: 40em;
+	padding: 0em;
+	height: 100%;
+}
+
+article li {
+	margin-left: 3ex;
+	padding-left: 1ex;
+}
+
+article section img {
+ 	max-width: 80%;
+ 	margin: auto;
+ 	display:block;
+}
+
+section {
+	line-height: 1.4em;
+	margin: auto 0em;
+	padding: 0.2ex 1em;
+}
+
+
+section>div {
+	width: 100%;
+	text-align: center;
+}
+
+
+blockquote {
+	padding: 1ex 1em;
+	font-style: italic;
+	font-family: serif;
+	opacity: 0.75;
+}		
+		
+				
+pre {
+	padding-left: 2em;			
+}
+
+section h1 {
+	text-align: left;		
+	padding-bottom: 0ex;
+	padding-top: 1ex;
+	color: rgb(89, 55, 158);
+	font-size: 180%;
+}
+
+p, li, h1, ol, dl, dd, dt {
+	text-shadow: 0 0 1ex #FFF, 0 0 2ex #FFF, 0 0 3ex #FFF, 0 0 1ex #FFF, 0 0 2ex #FFF, 0 0 4ex #FFF,;
+}
+
+section>section>h1{
+	font-size: 150%;
+	color: rgb(89, 158,55);
+	font-family: 'Amaranth', arial, serif; 
+}
+section>section>section>h1{
+	font-size: 130%;
+	color: rgb(158,89, 55);
+}
+
+section>section>section>section>h1{
+	color: rgb(158, 55, 89);
+	font-size: 110%;
+}
+
+section>section>section>section>section>h1{
+	color: rgb(158, 158, 89);
+	font-size: 100%;
+	font-style: italic;
+}
+
+ul, ol {
+	padding-top: 1ex;
+	padding-bottom: 1ex;
+}
+
+p, li, blockquote {
+	color: #333333;
+	padding-top: 1ex;
+	padding-bottom: 0;
+}
+
+p+p, li+li {
+	padding-top: 1ex;
+	padding-bottom: 0;
+}
+
+aside {
+	display: none;
+}
+
+.reveal {
+	transition: all 0.5s ease-in-out;
+	-moz-transition: all 0.5s ease-in-out;
+	-webkit-transition: all 0.5s ease-in-out;
+	opacity: 0;
+}
+
+.reveal:hover {
+	opacity: 1;
+}
+
+p:hover, li:hover {
+	text-shadow: 0em 0em 1em #EE9;				
+}
+
+.bg {
+	display: none;
+}
+
+.smaller {
+	font-size: 60%;
+}
+
+.leftie {
+	float: right;
+	max-width: 49%;
+}
+
+.screen {
+	width: 120% !important;
+	max-width: 120% !important;
+}
+
+.input, .output {
+	border-color: rgba(89, 55, 158, 0.3);
+	border-style: solid;
+	border-width: thin;
+	padding: 1ex;
+	margin-bottom: 1ex;
+	margin-top: 1ex;
+	background: #fff;
+	text-align: left;
+	-moz-box-shadow: 0em 0.2ex 1em #EEE;
+	-moz-border-radius: 0.5ex;
+	-webkit-box-shadow: 0em 0.2ex 1em #EEE;
+	-webkit-border-radius: 0.5ex;
+	white-space: pre-wrap;
+    word-wrap: break-word;
+    background-position: top right;
+    background-repeat: no-repeat; 
+}
+
+.sourcelink {
+	font-size: 50%;
+}
+
+.output {
+    background-image: url(output.svg);
+}
+
+.html{
+	white-space: normal;
+}
+
+.input {
+    background-image: url(input.svg);
+}
+
+.output * li {
+	text-decoration: none;
+}
+
+.output p {
+	padding-top: 0em;
+}
+
+table {
+	border-collapse: collapse;
+}
+
+td,th {
+	border-color: #c5c5c5;
+	border-style: solid;
+	border-width: thin;
+	padding: 0.5ex 1em;
+}
+
+th {
+	background: rgba(89, 55, 158, 0.2);
+}
+
+
+dl,dd {
+	padding-left: 1em;
+}
+
+dt {
+	padding-top: 1ex;
+	font-family: "American Typewriter", monospace;
+	font-style: normal;
+	font-weight: bold;
+}
+
+.sideme {
+	position: absolute;
+	width:100%;
+	height:1ex;
+	bottom:0;
+	left:0;
+	background: #FFF;
+	display: table;
+	z-index: -1;
+	font-size: 50%;
+}
+
+meter {
+    -webkit-appearance: none;
+}
+
+meter::-webkit-meter-bar {
+    background: white;
+	color: rgb(186, 152, 255);
+
+}
+
+meter::-webkit-meter-optimum-value {
+    background: rgb(186, 152, 255);
+}
+
+.tag {color: purple;}
+.attr {color: blue;}
+.txt {color: grey;}
+
+
+
+.sider {
+	max-width: 35%;
+	float: right;
+}
+
+.sider dd {
+	display: none;
+}
+
+#presoshim {
+	background: rgba(255,255,255,0.5);
+	z-index: -99;
+	position: absolute;
+	top:0;
+	bottom:0;
+	left:0;
+	right:0;
+	display: block;
+}
