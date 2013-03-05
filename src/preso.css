@@ -5,9 +5,19 @@
 	padding: 0;
 }
 
-body {
+
+html, body {
+    width:100%;
+    height:100%;
 	font-family: "Trebuchet MS", arial, helvetica, sans-serif; 
 }
+
+body {
+	font-family: "Trebuchet MS", arial, helvetica, sans-serif; 
+    display:box;
+    box-pack:center;
+    box-align:center;}
+
 
 code {
 	font-family: monospace; 
@@ -52,9 +62,13 @@ nav button:hover{
 article {
 	font-size: 150%;
 	margin: auto;
-	max-width: 40em;
-	padding: 0em;
-	height: 100%;
+	width: auto;
+    box-flex:1;
+    overflow: auto;
+}
+
+article>section {
+	margin: 1em;
 }
 
 article li {
@@ -70,10 +84,13 @@ article section img {
 
 section {
 	line-height: 1.4em;
-	margin: auto 0em;
-	padding: 0.2ex 1em;
+	margin: 0;
+	padding: 0.2ex;
 }
 
+.off {
+	display: none;
+}
 
 section>div {
 	width: 100%;
@@ -90,39 +107,40 @@ blockquote {
 		
 				
 pre {
-	padding-left: 2em;			
+	padding-left: 2em;	
 }
 
 section h1 {
+	line-height: 50%;
 	text-align: left;		
 	padding-bottom: 0ex;
 	padding-top: 1ex;
 	color: rgb(89, 55, 158);
-	font-size: 180%;
 }
 
+
 p, li, h1, ol, dl, dd, dt {
-	text-shadow: 0 0 1ex #FFF, 0 0 2ex #FFF, 0 0 3ex #FFF, 0 0 1ex #FFF, 0 0 2ex #FFF, 0 0 4ex #FFF,;
+	text-shadow: 0 0 1ex #FFF, 0 0 2ex #FFF, 0 0 3ex #FFF, 0 0 1ex #FFF, 0 0 2ex #FFF, 0 0 4ex #FFF;
 }
 
 section>section>h1{
-	font-size: 150%;
+	font-size: 100%;
 	color: rgb(89, 158,55);
 	font-family: 'Amaranth', arial, serif; 
 }
 section>section>section>h1{
-	font-size: 130%;
+	font-size: 100%;
 	color: rgb(158,89, 55);
 }
 
 section>section>section>section>h1{
 	color: rgb(158, 55, 89);
-	font-size: 110%;
+	font-size: 100%;
 }
 
 section>section>section>section>section>h1{
 	color: rgb(158, 158, 89);
-	font-size: 100%;
+	font-size: 108%;
 	font-style: italic;
 }
 
@@ -188,14 +206,13 @@ p:hover, li:hover {
 	margin-top: 1ex;
 	background: #fff;
 	text-align: left;
-	-moz-box-shadow: 0em 0.2ex 1em #EEE;
-	-moz-border-radius: 0.5ex;
-	-webkit-box-shadow: 0em 0.2ex 1em #EEE;
-	-webkit-border-radius: 0.5ex;
+	box-shadow: 0 0.2ex 1em #EEE;
+	border-radius: 0.5ex;
 	white-space: pre-wrap;
     word-wrap: break-word;
     background-position: top right;
-    background-repeat: no-repeat; 
+    background-repeat: no-repeat;
+    width: 100%;
 }
 
 .sourcelink {
@@ -253,7 +270,7 @@ dt {
 	position: absolute;
 	width:100%;
 	height:1ex;
-	bottom:0;
+	top:0;
 	left:0;
 	background: #FFF;
 	display: table;
@@ -267,19 +284,17 @@ meter {
 
 meter::-webkit-meter-bar {
     background: white;
-	color: rgb(186, 152, 255);
+	color: rgb(204,204,204);
 
 }
 
 meter::-webkit-meter-optimum-value {
-    background: rgb(186, 152, 255);
+    background: rgb(204,204,204);
 }
 
 .tag {color: purple;}
 .attr {color: blue;}
 .txt {color: grey;}
-
-
 
 .sider {
 	max-width: 35%;
@@ -291,12 +306,12 @@ meter::-webkit-meter-optimum-value {
 }
 
 #presoshim {
-	background: rgba(255,255,255,0.5);
-	z-index: -99;
+	z-index: -10;
 	position: absolute;
 	top:0;
 	bottom:0;
 	left:0;
 	right:0;
 	display: block;
+	opacity: 0.2;
 }

@@ -52,23 +52,29 @@ rdfx.h5pres = (function () {
 	},
 	*/
 	
-	setBg = function() {},
-
-	setBg2 = function (elem) {
+	setBg = function (elem) {
 		var imgElem = elem.querySelectorAll("figure.bg img");
-		if (imgElem && imgElem[0] && imgElem[0].src) {
-			document.body.style.background = "url("+imgElem[0].src+")";
-			document.body.style.backgroundSize = "cover";
-		} else {
-			document.body.style.backgroundImage = "";
-			elem.style.background = "";
-		}
 		var shim = document.getElementById("presoshim");
 		shim.style.display = "";
+		if (imgElem && imgElem[0] && imgElem[0].src) {
+			shim.style.background = "url("+imgElem[0].src+")";
+			shim.style.backgroundSize = "cover";
+		} else {
+			shim.style.backgroundImage = "";
+		}
 
 	},
+
+	injectShim = function() {
+		var shim = document.getElementById("presoshim");
+		if (!shim) {
+			shim = document.createElement("div");
+			shim.setAttribute("id", "presoshim");
+			document.body.appendChild( shim );
+		}
+	},
 	
-	addMeters = function() {
+	injectMeters = function() {
 		var n, i, m, l=slides.length-1;
 		for ( i =0; i<slides.length; i++) {
 			m = document.createElement("meter");
@@ -115,7 +121,8 @@ rdfx.h5pres = (function () {
 						}
 					break;
 				default:
-					// everything[i] is within elem, so show everything[i] if it's not a section
+					// everything[i] is within elem, so show
+					// everything[i] if it's not a section
 					if (everything[i].nodeName !== "SECTION") {
 						everything[i].style.display = "";
 						if (cascadingHeadings && everything[i].parentNode) {
@@ -130,7 +137,7 @@ rdfx.h5pres = (function () {
 					}
 			}
 		}
-		setBg2(elem);
+		setBg(elem);
 
 	},
 	
@@ -192,6 +199,8 @@ rdfx.h5pres = (function () {
 		else if (docElm.webkitRequestFullScreen) {
 			docElm.webkitRequestFullScreen();
 		}
+
+		document.getElementById("startstopmenu").setAttribute("label","Stop Slideshow");
 	},
 
 	stopPresenting = function () {
@@ -211,6 +220,7 @@ rdfx.h5pres = (function () {
 			document.webkitCancelFullScreen();
 		}
 
+		document.getElementById("startstopmenu").setAttribute("label","Start Slideshow");
 
 	},
 	
@@ -258,7 +268,7 @@ rdfx.h5pres = (function () {
 	
 	injectStylesheet = function () {
 		var e = document.createElement('link');
-		e.href = "/pinc/preso.css";
+		e.href = "/lib/h5pres/src/preso.css";
 		e.title = "presentation";
 		e.media = "screen";
 		e.type = "text/css";
@@ -268,8 +278,8 @@ rdfx.h5pres = (function () {
 	},
 	
 	loaded = function () {
-		console.log("start");
 		injectStylesheet();
+		injectShim();
 		injectMenu();
 		stylesheets = document.querySelectorAll('link[media~=screen][rel~=stylesheet], link[media~=all][rel~=stylesheet]');
 		slides = toArray( document.querySelectorAll("article>section, section>section") );
@@ -277,13 +287,13 @@ rdfx.h5pres = (function () {
 		everything = toArray( document.querySelectorAll("body *") );
 		current = readHash(params.slide) ? parseInt(readHash(params.slide), 10) - 1 : 0;
 		debug = readHash(params.debug) ? true : false;
-		addMeters();
+		injectMeters();
 		window.addEventListener('keydown', keypress.bind(rdfx.h5pres), false);
 	},
 
 	injectMenu = function () {
 		var body = document.querySelector("body");
-		body.innerHTML += '<menu type="context" id="presentmenu"><menuitem label="Toggle Slide View" onclick="rdfx.h5pres.activateNextStyleSheet()" icon="/favicon.ico"></menuitem></menu>';
+		body.innerHTML += '<menu type="context" id="presentmenu"><menuitem id="startstopmenu" label="Start Slideshow" onclick="rdfx.h5pres.activateNextStyleSheet()" icon="/favicon.ico"></menuitem></menu>';
 		var articles = toArray( document.querySelectorAll("article") );
 		for (var i=0; i<articles.length; i++) {
 			articles[i].setAttribute("contextmenu", "presentmenu");
@@ -292,7 +302,6 @@ rdfx.h5pres = (function () {
 
 	// return exposes some private functions as public
 	return {
-//		loaded : loaded.bind(this),
 		loaded : loaded.bind(rdfx.h5pres),
 		activateNextStyleSheet: activateNextStyleSheet.bind(rdfx.h5pres),
 		changeCurrent: changeCurrent.bind(this)
