@@ -54,17 +54,17 @@ article section img {
 	font-size: 50%;
 }
 
-meter {
+meter.sideme {
     -webkit-appearance: none;
 }
 
-meter::-webkit-meter-bar {
+meter.sideme::-webkit-meter-bar {
     background: white;
 	color: rgb(204,204,204);
 
 }
 
-meter::-webkit-meter-optimum-value {
+meter.sideme::-webkit-meter-optimum-value {
     background: rgb(204,204,204);
 }
 
